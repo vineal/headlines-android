@@ -23,11 +23,14 @@ final class FetchRemoteArticlesUseCaseTests: XCTestCase {
         let sut: FetchRemoteArticlesUseCaseProtocol =  FetchRemoteArticlesUseCase(
             remoteRepository: repositorySpy
         )
+        let expectation = XCTestExpectation(description: "Wait for completion")
         sut.fetchArticles { articles, error in
+            expectation.fulfill()
             XCTAssertNil(articles)
             XCTAssertEqual(error as? CustomErrors, CustomErrors.remoteFetchFailed)
             XCTAssertEqual((error as? CustomErrors)?.rawValue, "Oh oh! Seems like something is not right. Check your internet connection or try again later.")
         }
+        wait(for: [expectation], timeout: 0.1)
     }
     
     func testUsecase_whenRepositorySucceed_ShouldReturnArticles() throws {
@@ -37,7 +40,9 @@ final class FetchRemoteArticlesUseCaseTests: XCTestCase {
         let sut: FetchRemoteArticlesUseCaseProtocol = FetchRemoteArticlesUseCase(
             remoteRepository: repositorySpy
         )
+        let expectation = XCTestExpectation(description: "Wait for completion")
         sut.fetchArticles { [weak self] articles , error in
+            expectation.fulfill()
             XCTAssertNil(error)
             if let articles {
                 XCTAssertNotNil(articles)
@@ -46,5 +51,6 @@ final class FetchRemoteArticlesUseCaseTests: XCTestCase {
                 XCTFail("Should have got articles")
             }
         }
+        wait(for: [expectation], timeout: 0.1)
     }
 }
