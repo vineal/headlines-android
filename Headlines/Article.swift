@@ -5,7 +5,7 @@ class Article: Object {
     @objc dynamic var headline = ""
     @objc dynamic var body = ""
     @objc dynamic var published: Date?
-    @objc private dynamic var rawImageURL: String?
+    @objc dynamic var rawImageURL: String?
     var imageURL: URL? {
         guard let rawImageURL = rawImageURL else { return nil }
         return URL(string: rawImageURL)

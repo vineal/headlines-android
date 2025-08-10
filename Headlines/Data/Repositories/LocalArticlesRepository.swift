@@ -7,7 +7,18 @@
 //
 
 struct LocalArticlesRepository: LocalArticlesRepositoryProtocol{
+    let service: LocalArticlesServiceProtocol
+    let articleToDBMapper: ArticleToArticleDBMapper
+
+    init(
+        service: LocalArticlesServiceProtocol,
+        articleToDBMapper: ArticleToArticleDBMapper = ArticleToArticleDBMapper()
+    ) {
+        self.service = service
+        self.articleToDBMapper = articleToDBMapper
+    }
+    
     func saveArticles(_ articles: [Article]) throws {
-        throw CustomErrors.dbOpertaionFailure
+        try service.saveArticles(articles.compactMap { articleToDBMapper.map($0) })
     }
 }
