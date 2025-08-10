@@ -13,15 +13,15 @@ class SubtitleCell: UITableViewCell {
 
 final class FavouritesViewController: UITableViewController {
     var articleSelected: ((IndexPath) -> Void)?
-    let fetchLocalArticlesUseCase: FetchLocalArticlesUseCaseProtocol
     var articles = [Article]()
-    
+    let viewModel: FavouritesViewModel
+
     init(
         articleSelected: ((IndexPath) -> Void)? = nil,
-        fetchLocalArticlesUseCase: FetchLocalArticlesUseCaseProtocol = FetchLocalArticlesUseCase()
+        viewModel: FavouritesViewModel = FavouritesViewModel()
     ) {
         self.articleSelected = articleSelected
-        self.fetchLocalArticlesUseCase = fetchLocalArticlesUseCase
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -39,13 +39,8 @@ final class FavouritesViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // TODO: Replace with viewmodel and usecase to fetch only favourites
-        fetchLocalArticlesUseCase.fetchArticles { [weak self] articles, error in
-            // Handle error
+        viewModel.fetchFavourites { [weak self] articles, error in
             self?.articles = articles ?? []
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
-            }
         }
         // Do any additional setup after loading the view.
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonPressed))

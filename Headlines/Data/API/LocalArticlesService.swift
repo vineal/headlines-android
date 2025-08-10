@@ -13,6 +13,7 @@ protocol LocalArticlesServiceProtocol {
     func saveArticles(_ articles: [ArticleDB]) throws
     func fetchArticles(completion: @escaping ([ArticleDB], Error?) -> Void)
     func favouriteArticle(article: ArticleDB?, completion: @escaping (Error?) -> Void)
+    func fetchFavourites(completion: @escaping (([ArticleDB], Error?) -> Void))
 }
 
 struct LocalArticlesService: LocalArticlesServiceProtocol {
@@ -64,6 +65,16 @@ struct LocalArticlesService: LocalArticlesServiceProtocol {
             }
         } catch {
             completion(CustomErrors.dbOpertaionFailure)
+        }
+    }
+    
+    func fetchFavourites(completion: @escaping (([ArticleDB], Error?) -> Void)) {
+        do {
+            let realm = try Realm()
+            let favs = realm.objects(ArticleDB.self).where { $0.isFavourited == true }
+            completion(Array(favs), nil)
+        } catch {
+            completion([], error)
         }
     }
 }
