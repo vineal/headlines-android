@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		5FA4BAB3279B01EA00E9C4EB /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 5FA4BAB2279B01EA00E9C4EB /* SDWebImage */; };
 		5FA4BABE279B081B00E9C4EB /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 5FA4BABD279B081B00E9C4EB /* Alamofire */; };
+		973EACF72E48A42A004FF66B /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 973EACF62E48A41F004FF66B /* Secrets.xcconfig */; };
+		973EACF92E48A455004FF66B /* Secrets.xcconfig.example in Resources */ = {isa = PBXBuildFile; fileRef = 973EACF82E48A455004FF66B /* Secrets.xcconfig.example */; };
+		973EACFC2E48A4C0004FF66B /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973EACFB2E48A4BD004FF66B /* Secrets.swift */; };
 		AFC312811EC1E45A00105E93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC312801EC1E45A00105E93 /* AppDelegate.swift */; };
 		AFC312831EC1E45A00105E93 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC312821EC1E45A00105E93 /* ViewController.swift */; };
 		AFC312881EC1E45A00105E93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFC312871EC1E45A00105E93 /* Assets.xcassets */; };
@@ -20,6 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		973EACF62E48A41F004FF66B /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		973EACF82E48A455004FF66B /* Secrets.xcconfig.example */ = {isa = PBXFileReference; lastKnownFileType = text; path = Secrets.xcconfig.example; sourceTree = "<group>"; };
+		973EACFB2E48A4BD004FF66B /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		AFC3127D1EC1E45A00105E93 /* Headlines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Headlines.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFC312801EC1E45A00105E93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFC312821EC1E45A00105E93 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -52,6 +58,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		973EACFA2E48A4AB004FF66B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				973EACFB2E48A4BD004FF66B /* Secrets.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		97E15E2E2E48A33700CA5FF8 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				973EACF62E48A41F004FF66B /* Secrets.xcconfig */,
+				973EACF82E48A455004FF66B /* Secrets.xcconfig.example */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		AFC312741EC1E45A00105E93 = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +95,8 @@
 		AFC3127F1EC1E45A00105E93 /* Headlines */ = {
 			isa = PBXGroup;
 			children = (
+				973EACFA2E48A4AB004FF66B /* Utilities */,
+				97E15E2E2E48A33700CA5FF8 /* Config */,
 				AFC312801EC1E45A00105E93 /* AppDelegate.swift */,
 				DF587B0E2D80828F008C8CCE /* SceneDelegate.swift */,
 				AFC312821EC1E45A00105E93 /* ViewController.swift */,
@@ -154,8 +179,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				973EACF92E48A455004FF66B /* Secrets.xcconfig.example in Resources */,
 				AFC3128B1EC1E45A00105E93 /* LaunchScreen.storyboard in Resources */,
 				AFC312881EC1E45A00105E93 /* Assets.xcassets in Resources */,
+				973EACF72E48A42A004FF66B /* Secrets.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF587B0F2D808296008C8CCE /* SceneDelegate.swift in Sources */,
+				973EACFC2E48A4C0004FF66B /* Secrets.swift in Sources */,
 				AFC312991EC1FE4A00105E93 /* FavouritesViewController.swift in Sources */,
 				AFC312831EC1E45A00105E93 /* ViewController.swift in Sources */,
 				AFC312811EC1E45A00105E93 /* AppDelegate.swift in Sources */,
@@ -296,6 +324,7 @@
 		};
 		AFC312901EC1E45A00105E93 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 973EACF62E48A41F004FF66B /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -315,6 +344,7 @@
 		};
 		AFC312911EC1E45A00105E93 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 973EACF62E48A41F004FF66B /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;

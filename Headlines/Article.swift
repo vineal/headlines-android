@@ -2,7 +2,7 @@ import UIKit
 import RealmSwift
 import Alamofire
 
-fileprivate let APIKey = "09658731-cb6d-4a84-9e3c-5f030389de4e"
+fileprivate let APIKey = Secrets.guardianAPIKey
 
 fileprivate extension String {
     var strippingTags: String {
