@@ -15,7 +15,7 @@
 		973EAD002E48A60E004FF66B /* ArticlePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973EACFF2E48A604004FF66B /* ArticlePageViewController.swift */; };
 		973EAD0D2E48A645004FF66B /* ArticlePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973EAD0C2E48A641004FF66B /* ArticlePageViewModel.swift */; };
 		AFC312811EC1E45A00105E93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC312801EC1E45A00105E93 /* AppDelegate.swift */; };
-		AFC312831EC1E45A00105E93 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC312821EC1E45A00105E93 /* ViewController.swift */; };
+		AFC312831EC1E45A00105E93 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC312821EC1E45A00105E93 /* ArticleViewController.swift */; };
 		AFC312881EC1E45A00105E93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFC312871EC1E45A00105E93 /* Assets.xcassets */; };
 		AFC3128B1EC1E45A00105E93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFC312891EC1E45A00105E93 /* LaunchScreen.storyboard */; };
 		AFC312971EC1E80800105E93 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC312961EC1E80800105E93 /* Article.swift */; };
@@ -32,7 +32,7 @@
 		973EAD0C2E48A641004FF66B /* ArticlePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlePageViewModel.swift; sourceTree = "<group>"; };
 		AFC3127D1EC1E45A00105E93 /* Headlines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Headlines.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFC312801EC1E45A00105E93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AFC312821EC1E45A00105E93 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AFC312821EC1E45A00105E93 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		AFC312871EC1E45A00105E93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AFC3128A1EC1E45A00105E93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFC3128C1EC1E45A00105E93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				973EACFF2E48A604004FF66B /* ArticlePageViewController.swift */,
-				AFC312821EC1E45A00105E93 /* ViewController.swift */,
+				AFC312821EC1E45A00105E93 /* ArticleViewController.swift */,
 				AFC312981EC1FE4A00105E93 /* FavouritesViewController.swift */,
 			);
 			path = Views;
@@ -228,7 +228,7 @@
 				973EAD0D2E48A645004FF66B /* ArticlePageViewModel.swift in Sources */,
 				973EACFC2E48A4C0004FF66B /* Secrets.swift in Sources */,
 				AFC312991EC1FE4A00105E93 /* FavouritesViewController.swift in Sources */,
-				AFC312831EC1E45A00105E93 /* ViewController.swift in Sources */,
+				AFC312831EC1E45A00105E93 /* ArticleViewController.swift in Sources */,
 				AFC312811EC1E45A00105E93 /* AppDelegate.swift in Sources */,
 				AFC312971EC1E80800105E93 /* Article.swift in Sources */,
 			);

@@ -32,7 +32,7 @@ extension ArticlesPageViewController: UIPageViewControllerDataSource
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
         guard let viewControllerIndex = viewModel.articlesVCs?.firstIndex(
-            of: viewController as! ViewController
+            of: viewController as! ArticleViewController
         ) else { return nil }
         
         let previousIndex = viewControllerIndex - 1
@@ -46,7 +46,7 @@ extension ArticlesPageViewController: UIPageViewControllerDataSource
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController?
     {
-        guard let viewControllerIndex = viewModel.articlesVCs?.firstIndex(of: viewController as! ViewController) else { return nil }
+        guard let viewControllerIndex = viewModel.articlesVCs?.firstIndex(of: viewController as! ArticleViewController) else { return nil }
         
         let nextIndex = viewControllerIndex + 1
         

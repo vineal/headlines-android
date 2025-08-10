@@ -8,8 +8,8 @@
 
 class ArticlePageViewModel {
     var articles: [Article]?
-    var onArticlesChanged: (([ViewController]?, Error?) -> Void)?
-    var articlesVCs: [ViewController]? {
+    var onArticlesChanged: (([ArticleViewController]?, Error?) -> Void)?
+    var articlesVCs: [ArticleViewController]? {
         didSet { onArticlesChanged?(articlesVCs, nil) }
     }
     
@@ -21,11 +21,11 @@ class ArticlePageViewModel {
         }
     }
     
-    func getListOfArticleVCs() -> [ViewController] {
-        var articleVCs: [ViewController] = []
+    func getListOfArticleVCs() -> [ArticleViewController] {
+        var articleVCs: [ArticleViewController] = []
         if let articles {
             for index in 0..<articles.count {
-                let articleVC = ViewController(article: articles[index])
+                let articleVC = ArticleViewController(article: articles[index])
                 articleVCs.append(articleVC)
             }
         }

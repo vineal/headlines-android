@@ -1,7 +1,7 @@
 import UIKit
 import SDWebImage
 
-final class ViewController: UIViewController {
+final class ArticleViewController: UIViewController {
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
