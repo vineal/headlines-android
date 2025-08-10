@@ -9,6 +9,7 @@
 import Foundation
 
 struct RemoteArticleDTO {
+    var id = ""
     var headline = ""
     var body = ""
     var published: Date?
@@ -21,6 +22,7 @@ struct RemoteArticleDTO {
     static let formatter = ISO8601DateFormatter()
 
     init(dictionary: [String : Any]) {
+        id = dictionary["id"] as? String ?? ""
         headline = dictionary["webTitle"] as? String ?? ""
         
         if let publicationDate = dictionary["webPublicationDate"] as? String {

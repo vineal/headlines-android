@@ -10,21 +10,26 @@ import Foundation
 import RealmSwift
 
 class ArticleDB: Object {
+    @Persisted(primaryKey: true) var id = ""
     @Persisted var headline = ""
-    @Persisted dynamic var body = ""
-    @Persisted dynamic var published: Date?
-    @Persisted private dynamic var rawImageURL: String?
+    @Persisted var body = ""
+    @Persisted var published: Date?
+    @Persisted var rawImageURL: String?
+    
     var imageURL: URL? {
         guard let rawImageURL = rawImageURL else { return nil }
         return URL(string: rawImageURL)
     }
+    
     convenience init?(
+        id: String,
         headline: String,
         body: String,
         published: Date?,
         rawImageURL: String?
     ) {
         self.init()
+        self.id = id
         self.headline = headline
         self.body = body
         self.published = published

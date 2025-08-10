@@ -26,15 +26,24 @@ struct LocalArticlesService: LocalArticlesServiceProtocol {
     }
     
     func saveArticles(_ articles: [ArticleDB]) throws {
-        do {
-            let realm = try Realm()
-            let all = realm.objects(ArticleDB.self)
-            _ = try realm.write {
-                realm.delete(Array(all))
-                realm.add(articles)
+        let realm = try Realm()
+        let incomingIDs = Set(articles.map(\.id))
+        try realm.write {
+            for article in articles {
+                realm.create(
+                    ArticleDB.self,
+                    value: [
+                        "id": article.id,
+                        "headline": article.headline,
+                        "body": article.body,
+                        "published": article.published as Any,
+                        "rawImageURL": article.rawImageURL as Any
+                    ],
+                    update: .modified
+                )
             }
-        } catch {
-            throw CustomErrors.dbOpertaionFailure
+            let stale = realm.objects(ArticleDB.self).where { !$0.id.in(Array(incomingIDs)) }
+            realm.delete(stale)
         }
     }
 }

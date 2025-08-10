@@ -9,6 +9,7 @@
 struct RemoteArticleToArticleMapper {
     func map(_ remoteArticle: RemoteArticleDTO) -> Article {
         Article(
+            id: remoteArticle.id,
             headline: remoteArticle.headline,
             body: remoteArticle.body,
             published: remoteArticle.published,

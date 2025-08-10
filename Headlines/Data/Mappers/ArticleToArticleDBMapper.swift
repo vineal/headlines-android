@@ -9,6 +9,7 @@
 struct ArticleToArticleDBMapper {
     func map(_ article: Article) -> ArticleDB? {
         return ArticleDB(
+            id: article.id,
             headline: article.headline,
             body: article.body,
             published: article.published,

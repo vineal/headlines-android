@@ -9,13 +9,16 @@
 struct LocalArticlesRepository: LocalArticlesRepositoryProtocol{
     let service: LocalArticlesServiceProtocol
     let articleToDBMapper: ArticleToArticleDBMapper
+    let dBtoArticleMapper: ArticleDBToArticleMapper
 
     init(
         service: LocalArticlesServiceProtocol = LocalArticlesService(),
-        articleToDBMapper: ArticleToArticleDBMapper = ArticleToArticleDBMapper()
+        articleToDBMapper: ArticleToArticleDBMapper = ArticleToArticleDBMapper(),
+        dBtoArticleMapper: ArticleDBToArticleMapper = ArticleDBToArticleMapper()
     ) {
         self.service = service
         self.articleToDBMapper = articleToDBMapper
+        self.dBtoArticleMapper = dBtoArticleMapper
     }
     
     func saveArticles(_ articles: [Article]) throws {
@@ -23,6 +26,8 @@ struct LocalArticlesRepository: LocalArticlesRepositoryProtocol{
     }
     
     func fetchArticles(completion: @escaping ([Article], (any Error)?) -> Void) {
-        
+        service.fetchArticles { articles, error in
+            completion(articles.compactMap({ dBtoArticleMapper.map($0)}), error)
+        }
     }
 }
