@@ -41,9 +41,19 @@ final class ViewController: UIViewController {
         return button
     }()
     
+    let article: Article?
+    
+    init(article: Article? =  nil) {
+        self.article = article
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = .white
         
         [imageView, headlineLabel, bodyLabel, addToFavouritesButton, goToFavouritesButton].forEach {
@@ -70,15 +80,11 @@ final class ViewController: UIViewController {
             goToFavouritesButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             goToFavouritesButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
         ])
-
-        reload()
-        Article.fetchArticles { _, _ in
-            self.reload()
-        }
+        updatedUI()
     }
     
-    func reload() {
-        guard let article = Article.all.first else { return }
+    private func updatedUI() {
+        guard let article else { return }
         headlineLabel.text = article.headline
         bodyLabel.text = article.body
         imageView.sd_setImage(with: article.imageURL)
