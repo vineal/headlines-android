@@ -13,6 +13,14 @@ final class ArticleViewController: UIViewController {
     private lazy var headlineLabel: UILabel = {
         let label = UILabel()
         label.text = "Headline"
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.font = UIFont.boldSystemFont(ofSize: 28)
+        label.textColor = .white
+        label.layer.shadowColor = UIColor.black.cgColor
+        label.layer.shadowRadius = 3
+        label.layer.shadowOpacity = 0.6
+        label.layer.shadowOffset = .zero
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -20,6 +28,8 @@ final class ArticleViewController: UIViewController {
     private lazy var bodyLabel: UILabel = {
         let label = UILabel()
         label.text = "Body"
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -41,6 +51,18 @@ final class ArticleViewController: UIViewController {
         return button
     }()
     
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+
+    private lazy var contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     let article: Article?
     
     init(article: Article? =  nil) {
@@ -56,23 +78,42 @@ final class ArticleViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        [imageView, headlineLabel, bodyLabel, addToFavouritesButton, goToFavouritesButton].forEach {
+        [scrollView, addToFavouritesButton, goToFavouritesButton].forEach {
             view.addSubview($0)
         }
         
+        scrollView.addSubview(contentView)
+
+        [imageView, headlineLabel, bodyLabel].forEach {
+            contentView.addSubview($0)
+        }
+        
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            imageView.heightAnchor.constraint(equalToConstant: 200),
-            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            // Set main scrollview constraints
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: addToFavouritesButton.topAnchor, constant: -16),
+            // Set Constraints for the content view inside scroll view
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            // Set constraints for contents inside content view
+            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            imageView.heightAnchor.constraint(equalToConstant: 350),
+            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             
-            headlineLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
-            headlineLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            headlineLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            headlineLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -16),
+            headlineLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 16),
+            headlineLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -16),
             
-            bodyLabel.topAnchor.constraint(equalTo: headlineLabel.bottomAnchor, constant: 8),
-            bodyLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            bodyLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            bodyLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
+            bodyLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            bodyLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            bodyLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
             
             addToFavouritesButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             addToFavouritesButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
