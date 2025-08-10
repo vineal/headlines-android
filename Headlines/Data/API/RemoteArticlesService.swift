@@ -17,7 +17,7 @@ struct RemoteArticlesService: RemoteArticlesServiceProtocol {
     private let APIKey = Secrets.guardianAPIKey
     
     func fetchArticles(completion: @escaping ([RemoteArticleDTO]?, (any Error)?) -> Void) {
-        let url = "http://content.guardianapis.com/search?q=fintech&show-fields=main,body&api-key=\(APIKey)"
+        let url = "https://content.guardianapis.com/search?q=fintech&show-fields=main,body&api-key=\(APIKey)"
         AF.request(url, encoding: JSONEncoding.default).responseJSON { response in
             switch response.result {
             case .success(let value):
