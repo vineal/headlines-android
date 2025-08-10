@@ -17,7 +17,6 @@ class ArticlesPageViewController: UIPageViewController, UIPageViewControllerDele
         super.viewDidLoad()
         self.dataSource = self
         self.delegate   = self
-        viewModel.reload()
         viewModel.fetchArticles()
         viewModel.onArticlesChanged = { [weak self] article, _ in
             // TODO: Handle Errors

@@ -43,8 +43,7 @@ class ArticlePageViewModel {
             } catch {
                 // TODO: Handle errors
             }
-            self?.articles = articles
-            self?.getListOfArticleVCs()
+            self?.reload()
         }
     }
     

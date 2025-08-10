@@ -7,10 +7,12 @@
 //
 
 import RealmSwift
+import Foundation
 
 protocol LocalArticlesServiceProtocol {
     func saveArticles(_ articles: [ArticleDB]) throws
     func fetchArticles(completion: @escaping ([ArticleDB], Error?) -> Void)
+    func favouriteArticle(article: ArticleDB?, completion: @escaping (Error?) -> Void)
 }
 
 struct LocalArticlesService: LocalArticlesServiceProtocol {
@@ -44,6 +46,24 @@ struct LocalArticlesService: LocalArticlesServiceProtocol {
             }
             let stale = realm.objects(ArticleDB.self).where { !$0.id.in(Array(incomingIDs)) }
             realm.delete(stale)
+        }
+    }
+    
+    func favouriteArticle(article: ArticleDB?, completion: @escaping (Error?) -> Void) {
+        do {
+            let realm = try Realm()
+            try realm.write {
+                realm.create(
+                    ArticleDB.self,
+                    value: [
+                        "id": article?.id ?? UUID().uuidString,
+                        "isFavourited": article?.isFavourited ?? true
+                    ],
+                    update: .modified
+                )
+            }
+        } catch {
+            completion(CustomErrors.dbOpertaionFailure)
         }
     }
 }

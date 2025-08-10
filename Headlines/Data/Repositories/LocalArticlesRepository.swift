@@ -30,4 +30,8 @@ struct LocalArticlesRepository: LocalArticlesRepositoryProtocol{
             completion(articles.compactMap({ dBtoArticleMapper.map($0)}), error)
         }
     }
+    
+    func favouriteArticle(article: Article, completion: @escaping (Error?) -> Void) {
+        service.favouriteArticle(article: articleToDBMapper.map(article), completion: completion)
+    }
 }

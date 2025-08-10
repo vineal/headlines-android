@@ -63,10 +63,12 @@ final class ArticleViewController: UIViewController {
         return view
     }()
     
-    let article: Article?
+    var article: Article
+    let viewModel: ArticleViewModel
     
-    init(article: Article? =  nil) {
+    init(article: Article, viewModel: ArticleViewModel =  ArticleViewModel()) {
         self.article = article
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -92,6 +94,9 @@ final class ArticleViewController: UIViewController {
         [imageView, headlineLabel, bodyLabel].forEach {
             contentView.addSubview($0)
         }
+        
+        let favouriteButtonImage = (article.isFavourited ?? false) ? UIImage(named: "favourite-on") : UIImage(named: "favourite-off")
+        addToFavouritesButton.setImage(favouriteButtonImage, for: .normal)
         
         NSLayoutConstraint.activate([
             // Set main scrollview constraints
@@ -129,7 +134,6 @@ final class ArticleViewController: UIViewController {
     }
     
     private func updateUI() {
-        guard let article else { return }
         headlineLabel.text = article.headline
         bodyLabel.text = article.body
         imageView.sd_setImage(with: article.imageURL)
@@ -142,6 +146,16 @@ final class ArticleViewController: UIViewController {
     }
     
     @objc private func addToFavouritesButtonPressed() {
-        // TODO: Handle favouriting
+        if article.isFavourited != nil {
+            article.isFavourited?.toggle()
+        } else {
+            article.isFavourited = true
+        }
+        let favouriteButtonImage = (article.isFavourited ?? false) ? UIImage(named: "favourite-on") : UIImage(named: "favourite-off")
+        addToFavouritesButton.setImage(favouriteButtonImage, for: .normal)
+        
+        viewModel.favouriteArticle(article: article) { [weak self] error in
+           // TODO: Handle error
+        }
     }
 }

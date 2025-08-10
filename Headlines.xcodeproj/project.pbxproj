@@ -30,6 +30,8 @@
 		9767FF872E48CB0300309D8A /* ArticleToArticleDBMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9767FF862E48CAFF00309D8A /* ArticleToArticleDBMapper.swift */; };
 		9767FF8C2E48CC1D00309D8A /* FetchLocalArticlesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9767FF8B2E48CC1C00309D8A /* FetchLocalArticlesUseCase.swift */; };
 		9767FF902E48DC2700309D8A /* ArticleDBToArticleMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9767FF8F2E48DC2400309D8A /* ArticleDBToArticleMapper.swift */; };
+		9767FF922E48E07500309D8A /* FavouriteArticleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9767FF912E48E04500309D8A /* FavouriteArticleUseCase.swift */; };
+		9767FF942E48E12800309D8A /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9767FF932E48E11B00309D8A /* ArticleViewModel.swift */; };
 		AFC312811EC1E45A00105E93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC312801EC1E45A00105E93 /* AppDelegate.swift */; };
 		AFC312831EC1E45A00105E93 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC312821EC1E45A00105E93 /* ArticleViewController.swift */; };
 		AFC312881EC1E45A00105E93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFC312871EC1E45A00105E93 /* Assets.xcassets */; };
@@ -73,6 +75,8 @@
 		9767FF862E48CAFF00309D8A /* ArticleToArticleDBMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleToArticleDBMapper.swift; sourceTree = "<group>"; };
 		9767FF8B2E48CC1C00309D8A /* FetchLocalArticlesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLocalArticlesUseCase.swift; sourceTree = "<group>"; };
 		9767FF8F2E48DC2400309D8A /* ArticleDBToArticleMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDBToArticleMapper.swift; sourceTree = "<group>"; };
+		9767FF912E48E04500309D8A /* FavouriteArticleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteArticleUseCase.swift; sourceTree = "<group>"; };
+		9767FF932E48E11B00309D8A /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModel.swift; sourceTree = "<group>"; };
 		AFC3127D1EC1E45A00105E93 /* Headlines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Headlines.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFC312801EC1E45A00105E93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFC312821EC1E45A00105E93 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +150,7 @@
 		973EAD0E2E48A650004FF66B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				9767FF932E48E11B00309D8A /* ArticleViewModel.swift */,
 				973EAD0C2E48A641004FF66B /* ArticlePageViewModel.swift */,
 			);
 			path = ViewModels;
@@ -164,6 +169,7 @@
 		973EAD262E48B09F004FF66B /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				9767FF912E48E04500309D8A /* FavouriteArticleUseCase.swift */,
 				9767FF8B2E48CC1C00309D8A /* FetchLocalArticlesUseCase.swift */,
 				9767FF702E48C38B00309D8A /* SaveArticlesInDBUseCase.swift */,
 				973EAD1E2E48AE25004FF66B /* FetchRemoteArticlesUseCase.swift */,
@@ -420,6 +426,7 @@
 				DF587B0F2D808296008C8CCE /* SceneDelegate.swift in Sources */,
 				9767FF8C2E48CC1D00309D8A /* FetchLocalArticlesUseCase.swift in Sources */,
 				973EAD002E48A60E004FF66B /* ArticlePageViewController.swift in Sources */,
+				9767FF922E48E07500309D8A /* FavouriteArticleUseCase.swift in Sources */,
 				973EAD392E48B3CA004FF66B /* RemoteArticleDTO.swift in Sources */,
 				973EAD0D2E48A645004FF66B /* ArticlePageViewModel.swift in Sources */,
 				973EAD452E48B743004FF66B /* String+Extensions.swift in Sources */,
@@ -439,6 +446,7 @@
 				973EAD1F2E48AE27004FF66B /* FetchRemoteArticlesUseCase.swift in Sources */,
 				9767FF822E48C9AD00309D8A /* ArticleDB.swift in Sources */,
 				973EAD212E48AE64004FF66B /* CustomErrors.swift in Sources */,
+				9767FF942E48E12800309D8A /* ArticleViewModel.swift in Sources */,
 				9767FF7E2E48C7B100309D8A /* LocalArticlesRepository.swift in Sources */,
 				9767FF712E48C38C00309D8A /* SaveArticlesInDBUseCase.swift in Sources */,
 			);
