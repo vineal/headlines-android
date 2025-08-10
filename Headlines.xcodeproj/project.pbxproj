@@ -16,6 +16,7 @@
 		973EAD0D2E48A645004FF66B /* ArticlePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973EAD0C2E48A641004FF66B /* ArticlePageViewModel.swift */; };
 		973EAD1F2E48AE27004FF66B /* FetchRemoteArticlesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973EAD1E2E48AE25004FF66B /* FetchRemoteArticlesUseCase.swift */; };
 		973EAD212E48AE64004FF66B /* CustomErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973EAD202E48AE62004FF66B /* CustomErrors.swift */; };
+		973EAD2A2E48B0B9004FF66B /* RemoteArticlesRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973EAD292E48B0B7004FF66B /* RemoteArticlesRepositoryProtocol.swift */; };
 		AFC312811EC1E45A00105E93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC312801EC1E45A00105E93 /* AppDelegate.swift */; };
 		AFC312831EC1E45A00105E93 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC312821EC1E45A00105E93 /* ArticleViewController.swift */; };
 		AFC312881EC1E45A00105E93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFC312871EC1E45A00105E93 /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		973EAD142E48AD73004FF66B /* HeadlinesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeadlinesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		973EAD1E2E48AE25004FF66B /* FetchRemoteArticlesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRemoteArticlesUseCase.swift; sourceTree = "<group>"; };
 		973EAD202E48AE62004FF66B /* CustomErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrors.swift; sourceTree = "<group>"; };
+		973EAD292E48B0B7004FF66B /* RemoteArticlesRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteArticlesRepositoryProtocol.swift; sourceTree = "<group>"; };
 		AFC3127D1EC1E45A00105E93 /* Headlines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Headlines.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFC312801EC1E45A00105E93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFC312821EC1E45A00105E93 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
@@ -126,10 +128,35 @@
 		973EAD0F2E48AD5D004FF66B /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				973EAD202E48AE62004FF66B /* CustomErrors.swift */,
-				973EAD1E2E48AE25004FF66B /* FetchRemoteArticlesUseCase.swift */,
+				973EAD282E48B0AF004FF66B /* Repositories */,
+				973EAD272E48B0A7004FF66B /* Models */,
+				973EAD262E48B09F004FF66B /* UseCases */,
 			);
 			path = Domain;
+			sourceTree = "<group>";
+		};
+		973EAD262E48B09F004FF66B /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				973EAD1E2E48AE25004FF66B /* FetchRemoteArticlesUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		973EAD272E48B0A7004FF66B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				973EAD202E48AE62004FF66B /* CustomErrors.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		973EAD282E48B0AF004FF66B /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				973EAD292E48B0B7004FF66B /* RemoteArticlesRepositoryProtocol.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		97E15E2E2E48A33700CA5FF8 /* Config */ = {
@@ -307,6 +334,7 @@
 				973EAD002E48A60E004FF66B /* ArticlePageViewController.swift in Sources */,
 				973EAD0D2E48A645004FF66B /* ArticlePageViewModel.swift in Sources */,
 				973EACFC2E48A4C0004FF66B /* Secrets.swift in Sources */,
+				973EAD2A2E48B0B9004FF66B /* RemoteArticlesRepositoryProtocol.swift in Sources */,
 				AFC312991EC1FE4A00105E93 /* FavouritesViewController.swift in Sources */,
 				AFC312831EC1E45A00105E93 /* ArticleViewController.swift in Sources */,
 				AFC312811EC1E45A00105E93 /* AppDelegate.swift in Sources */,
