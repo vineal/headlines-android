@@ -21,4 +21,8 @@ struct LocalArticlesRepository: LocalArticlesRepositoryProtocol{
     func saveArticles(_ articles: [Article]) throws {
         try service.saveArticles(articles.compactMap { articleToDBMapper.map($0) })
     }
+    
+    func fetchArticles(completion: @escaping ([Article], (any Error)?) -> Void) {
+        
+    }
 }

@@ -11,8 +11,13 @@ protocol FetchLocalArticlesUseCaseProtocol {
 }
 
 struct FetchLocalArticlesUseCase: FetchLocalArticlesUseCaseProtocol {
+    let localRepository: LocalArticlesRepositoryProtocol
+   
+    init(localRepository: LocalArticlesRepositoryProtocol) {
+        self.localRepository = localRepository
+    }
     
     func fetchArticles(completion: @escaping (([Article]?, Error?) -> Void)) {
-        completion(nil, CustomErrors.dbOpertaionFailure)
+        localRepository.fetchArticles(completion: completion)
     }
 }

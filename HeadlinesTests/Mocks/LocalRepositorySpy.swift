@@ -8,9 +8,11 @@
 @testable import Headlines
 
 class LocalRepositorySpy: LocalArticlesRepositoryProtocol {
+    
     let shouldThrowError: Bool
     var saveArticlesCounter = 0
-    
+    var fetchArticlesCounter = 0
+
     init(shouldThrowError: Bool) {
         self.shouldThrowError = shouldThrowError
     }
@@ -20,5 +22,10 @@ class LocalRepositorySpy: LocalArticlesRepositoryProtocol {
         if shouldThrowError {
             throw CustomErrors.dbOpertaionFailure
         }
+    }
+    
+    func fetchArticles(completion: @escaping ([Article], (any Error)?) -> Void) {
+        fetchArticlesCounter += 1
+        shouldThrowError ? completion([], CustomErrors.dbOpertaionFailure) : completion([], nil)
     }
 }

@@ -8,4 +8,5 @@
 
 protocol LocalArticlesRepositoryProtocol {
     func saveArticles(_ articles: [Article]) throws
+    func fetchArticles(completion: @escaping ([Article], Error?) -> Void)
 }
