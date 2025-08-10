@@ -1,8 +1,5 @@
 import UIKit
 import RealmSwift
-import Alamofire
-
-fileprivate let APIKey = Secrets.guardianAPIKey
 
 class Article: Object {
     @objc dynamic var headline = ""

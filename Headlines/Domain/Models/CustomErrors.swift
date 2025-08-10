@@ -7,4 +7,5 @@
 //
 enum CustomErrors: String, Error {
     case remoteFetchFailed = "Oh oh! Seems like something is not right. Check your internet connection or try again later."
+    case dbOpertaionFailure = "Oh oh! Seems like something is not right. Update your app or try reaching out to support."
 }
