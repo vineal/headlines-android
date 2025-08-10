@@ -45,8 +45,9 @@ final class SaveArticlesInDBUseCaseTests: XCTestCase {
         }
     }
     
-    struct TestFixtures {
-        static let fixedDate = Date(timeIntervalSince1970: 1_640_995_200)
+    // MARK: - Test helpers
+    private struct TestFixtures {
+        private static let fixedDate = Date(timeIntervalSince1970: 1_640_995_200)
         static let articles: [Article] = [
             Article(headline: "Headline1", body: "Body1", published: fixedDate, rawImageURL: "URL")!
         ]
