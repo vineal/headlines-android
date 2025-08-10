@@ -10,8 +10,14 @@ protocol SaveArticlesInDBUseCaseProtocol {
 }
 
 struct SaveArticlesInDBUseCase: SaveArticlesInDBUseCaseProtocol {
+    let localRepository: LocalArticlesRepositoryProtocol
+    
+    init(localRepository: LocalArticlesRepositoryProtocol) {
+        self.localRepository = localRepository
+    }
+    
     func saveArticles(_ articles: [Article]) throws {
-        throw CustomErrors.dbOpertaionFailure
+        try localRepository.saveArticles(articles)
     }
 }
 
