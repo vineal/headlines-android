@@ -9,7 +9,7 @@
 struct RemoteArticlesRepository: RemoteArticlesRepositoryProtocol {
     let service: RemoteArticlesServiceProtocol
     
-    init(service: RemoteArticlesServiceProtocol) {
+    init(service: RemoteArticlesServiceProtocol = RemoteArticlesService()) {
         self.service = service
     }
     

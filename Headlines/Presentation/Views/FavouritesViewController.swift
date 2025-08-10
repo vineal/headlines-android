@@ -31,7 +31,6 @@ final class FavouritesViewController: UITableViewController {
         navigationItem.searchController = searchController
         tableView.register(SubtitleCell.self, forCellReuseIdentifier: "cell")
         
-        Article.fetchArticles { _, _ in }
     }
     
     @objc func doneButtonPressed() {

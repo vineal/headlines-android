@@ -13,11 +13,11 @@ protocol FetchRemoteArticlesUseCaseProtocol {
 struct FetchRemoteArticlesUseCase: FetchRemoteArticlesUseCaseProtocol {
     let remoteRepository: RemoteArticlesRepositoryProtocol
     
-    init(remoteRepository: RemoteArticlesRepositoryProtocol ) {
+    init(remoteRepository: RemoteArticlesRepositoryProtocol = RemoteArticlesRepository()) {
         self.remoteRepository = remoteRepository
     }
     
     func fetchArticles(completion: @escaping (([Article]?, Error?) -> Void)) {
-        CustomErrors.remoteFetchFailed
+        remoteRepository.fetchArticles(completion: completion)
     }
 }

@@ -36,27 +36,16 @@ class Article: Object {
         rawImageURL = fields["main"]?.url?.absoluteString
     }
     
-    static func fetchArticles(completion: @escaping (([Article]?, Error?) -> Void)) {
-        let url = "http://content.guardianapis.com/search?q=fintech&show-fields=main,body&api-key=\(APIKey)"
-        AF.request(url, encoding: JSONEncoding.default).responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                guard let json = value as? [String: Any], let data = json["response"] as? [String: Any], let results = data["results"] as? [[String: Any]] else {
-                    completion(nil, response.error)
-                    return
-                }
-
-                let articles = results.compactMap { Article(dictionary: $0) }
-                let realm = try! Realm()
-                _ = try? realm.write {
-                    realm.delete(Article.all)
-                    realm.add(articles)
-                }
-
-                completion(articles, nil)
-            case .failure:
-                break
-            }
-        }
+    convenience init?(
+        headline: String,
+        body: String,
+        published: Date?,
+        rawImageURL: String?,
+    ) {
+        self.init()
+        self.headline = headline
+        self.body = body
+        self.published = published
+        self.rawImageURL = rawImageURL
     }
 }
