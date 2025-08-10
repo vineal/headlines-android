@@ -13,7 +13,8 @@ struct ArticleDBToArticleMapper {
             headline: article.headline,
             body: article.body,
             published: article.published,
-            rawImageURL: article.rawImageURL
+            rawImageURL: article.rawImageURL,
+            isFavourited: article.isFavourited
         )
     }
 }

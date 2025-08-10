@@ -14,6 +14,7 @@ struct RemoteArticleToArticleMapper {
             body: remoteArticle.body,
             published: remoteArticle.published,
             rawImageURL: remoteArticle.rawImageURL,
+            isFavourited: nil
         )
     }
 }

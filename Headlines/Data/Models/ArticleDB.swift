@@ -15,7 +15,8 @@ class ArticleDB: Object {
     @Persisted var body = ""
     @Persisted var published: Date?
     @Persisted var rawImageURL: String?
-    
+    @Persisted var isFavourited: Bool?
+
     var imageURL: URL? {
         guard let rawImageURL = rawImageURL else { return nil }
         return URL(string: rawImageURL)
@@ -26,7 +27,8 @@ class ArticleDB: Object {
         headline: String,
         body: String,
         published: Date?,
-        rawImageURL: String?
+        rawImageURL: String?,
+        isFavourited: Bool?
     ) {
         self.init()
         self.id = id
@@ -34,5 +36,6 @@ class ArticleDB: Object {
         self.body = body
         self.published = published
         self.rawImageURL = rawImageURL
+        self.isFavourited = isFavourited
     }
 }
