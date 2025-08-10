@@ -17,36 +17,41 @@ class ArticlePageViewModel {
     }
     
     let remoteArticleFetchUseCase: FetchRemoteArticlesUseCaseProtocol
-    
-    init(articles: [Article]? = nil, onArticlesChanged: (([ArticleViewController]?, Error?) -> Void)? = nil, articlesVCs: [ArticleViewController]? = nil, remoteArticleFetchUseCase: FetchRemoteArticlesUseCaseProtocol = FetchRemoteArticlesUseCase()) {
+    let saveArticlesUseCase: SaveArticlesInDBUseCaseProtocol
+    let fetchLocalArticlesUseCase: FetchLocalArticlesUseCaseProtocol
+    init(
+        articles: [Article]? = nil,
+        onArticlesChanged: (([ArticleViewController]?, Error?) -> Void)? = nil,
+        articlesVCs: [ArticleViewController]? = nil,
+        remoteArticleFetchUseCase: FetchRemoteArticlesUseCaseProtocol = FetchRemoteArticlesUseCase(),
+        saveArticlesUseCase: SaveArticlesInDBUseCaseProtocol = SaveArticlesInDBUseCase(),
+        fetchLocalArticlesUseCase: FetchLocalArticlesUseCaseProtocol = FetchLocalArticlesUseCase()
+    ) {
         self.articles = articles
         self.onArticlesChanged = onArticlesChanged
         self.articlesVCs = articlesVCs
         self.remoteArticleFetchUseCase = remoteArticleFetchUseCase
+        self.saveArticlesUseCase = saveArticlesUseCase
+        self.fetchLocalArticlesUseCase = fetchLocalArticlesUseCase
     }
     
     func fetchArticles() {
         remoteArticleFetchUseCase.fetchArticles { [weak self] articles, error in
-            // TODO: Handle errors
-            self?.saveArticlesInDB(articles: articles, completeion: { [weak self] error in
-                self?.onArticlesChanged?(nil, error)
-            })
+            guard let articles else { return }
+            do {
+                try self?.saveArticlesUseCase.saveArticles(articles)
+            } catch {
+                // TODO: Handle errors
+            }
             self?.articles = articles
             self?.getListOfArticleVCs()
         }
     }
     
-    private func saveArticlesInDB(articles: [Article]?, completeion: ((Error?) -> Void)?) {
-        // TODO: Move to it's own usecase
-        guard let articles else { return }
-        do {
-            let realm = try Realm()
-            _ = try realm.write {
-                realm.delete(Article.all)
-                realm.add(articles)
-            }
-        } catch {
-            completeion?(error)
+    func reload() {
+        fetchLocalArticlesUseCase.fetchArticles { [weak self] articles, error in
+            self?.articles = articles
+            self?.getListOfArticleVCs()
         }
     }
     

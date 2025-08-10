@@ -173,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				973EAD202E48AE62004FF66B /* CustomErrors.swift */,
+				AFC312961EC1E80800105E93 /* Article.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -280,7 +281,6 @@
 				97E15E2E2E48A33700CA5FF8 /* Config */,
 				AFC312801EC1E45A00105E93 /* AppDelegate.swift */,
 				DF587B0E2D80828F008C8CCE /* SceneDelegate.swift */,
-				AFC312961EC1E80800105E93 /* Article.swift */,
 				AFC312871EC1E45A00105E93 /* Assets.xcassets */,
 				AFC312891EC1E45A00105E93 /* LaunchScreen.storyboard */,
 				AFC3128C1EC1E45A00105E93 /* Info.plist */,

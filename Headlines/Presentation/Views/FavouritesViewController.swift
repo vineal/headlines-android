@@ -13,7 +13,21 @@ class SubtitleCell: UITableViewCell {
 
 final class FavouritesViewController: UITableViewController {
     var articleSelected: ((IndexPath) -> Void)?
-    let articles = Article.all
+    let fetchLocalArticlesUseCase: FetchLocalArticlesUseCaseProtocol
+    var articles = [Article]()
+    
+    init(
+        articleSelected: ((IndexPath) -> Void)? = nil,
+        fetchLocalArticlesUseCase: FetchLocalArticlesUseCaseProtocol = FetchLocalArticlesUseCase()
+    ) {
+        self.articleSelected = articleSelected
+        self.fetchLocalArticlesUseCase = fetchLocalArticlesUseCase
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
@@ -25,7 +39,14 @@ final class FavouritesViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        // TODO: Replace with viewmodel and usecase to fetch only favourites
+        fetchLocalArticlesUseCase.fetchArticles { [weak self] articles, error in
+            // Handle error
+            self?.articles = articles ?? []
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
         // Do any additional setup after loading the view.
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonPressed))
         navigationItem.searchController = searchController

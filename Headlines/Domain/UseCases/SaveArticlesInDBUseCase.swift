@@ -12,7 +12,7 @@ protocol SaveArticlesInDBUseCaseProtocol {
 struct SaveArticlesInDBUseCase: SaveArticlesInDBUseCaseProtocol {
     let localRepository: LocalArticlesRepositoryProtocol
     
-    init(localRepository: LocalArticlesRepositoryProtocol) {
+    init(localRepository: LocalArticlesRepositoryProtocol = LocalArticlesRepository()) {
         self.localRepository = localRepository
     }
     

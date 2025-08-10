@@ -11,7 +11,7 @@ struct LocalArticlesRepository: LocalArticlesRepositoryProtocol{
     let articleToDBMapper: ArticleToArticleDBMapper
 
     init(
-        service: LocalArticlesServiceProtocol,
+        service: LocalArticlesServiceProtocol = LocalArticlesService(),
         articleToDBMapper: ArticleToArticleDBMapper = ArticleToArticleDBMapper()
     ) {
         self.service = service

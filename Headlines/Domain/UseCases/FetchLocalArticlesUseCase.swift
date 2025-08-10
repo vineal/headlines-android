@@ -13,7 +13,7 @@ protocol FetchLocalArticlesUseCaseProtocol {
 struct FetchLocalArticlesUseCase: FetchLocalArticlesUseCaseProtocol {
     let localRepository: LocalArticlesRepositoryProtocol
    
-    init(localRepository: LocalArticlesRepositoryProtocol) {
+    init(localRepository: LocalArticlesRepositoryProtocol = LocalArticlesRepository()) {
         self.localRepository = localRepository
     }
     
