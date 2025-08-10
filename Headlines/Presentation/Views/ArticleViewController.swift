@@ -76,6 +76,11 @@ final class ArticleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupLayout()
+        updateUI()
+    }
+    
+    private func setupLayout() {
         view.backgroundColor = .white
         
         [scrollView, addToFavouritesButton, goToFavouritesButton].forEach {
@@ -121,10 +126,9 @@ final class ArticleViewController: UIViewController {
             goToFavouritesButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             goToFavouritesButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
         ])
-        updatedUI()
     }
     
-    private func updatedUI() {
+    private func updateUI() {
         guard let article else { return }
         headlineLabel.text = article.headline
         bodyLabel.text = article.body
