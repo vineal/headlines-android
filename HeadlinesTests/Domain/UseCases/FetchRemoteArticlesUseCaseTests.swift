@@ -37,11 +37,11 @@ final class FetchRemoteArticlesUseCaseTests: XCTestCase {
         let sut: FetchRemoteArticlesUseCaseProtocol = FetchRemoteArticlesUseCase(
             remoteRepository: repositorySpy
         )
-        sut.fetchArticles { articles , error in
+        sut.fetchArticles { [weak self] articles , error in
             XCTAssertNil(error)
             if let articles {
                 XCTAssertNotNil(articles)
-                XCTAssertEqual(self.repositorySpy?.fetchArticlesCounter, 1)
+                XCTAssertEqual(self?.repositorySpy?.fetchArticlesCounter, 1)
             } else {
                 XCTFail("Should have got articles")
             }

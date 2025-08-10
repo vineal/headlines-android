@@ -7,7 +7,15 @@
 //
 
 struct RemoteArticlesRepository: RemoteArticlesRepositoryProtocol {
+    let service: RemoteArticlesServiceProtocol
+    
+    init(service: RemoteArticlesServiceProtocol) {
+        self.service = service
+    }
+    
     func fetchArticles(completion: @escaping ([Article]?, (any Error)?) -> Void) {
-        CustomErrors.remoteFetchFailed
+        service.fetchArticles { articles, error in
+            completion(articles?.compactMap({RemoteArticleToArticleMapper().map($0)}), error)
+        }
     }
 }
