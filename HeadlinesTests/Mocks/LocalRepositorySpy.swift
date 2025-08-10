@@ -8,6 +8,14 @@
 @testable import Headlines
 
 class LocalRepositorySpy: LocalArticlesRepositoryProtocol {
+    func favouriteArticle(article: Headlines.Article, completion: @escaping ((any Error)?) -> Void) {
+        // TODO: Needs tests and implementation
+    }
+    
+    func fetchFavourites(completion: @escaping ([Headlines.Article]?, (any Error)?) -> Void) {
+        // TODO: Needs tests and implementation
+    }
+    
     
     let shouldThrowError: Bool
     var saveArticlesCounter = 0

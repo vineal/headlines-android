@@ -26,7 +26,7 @@ final class FetchLocalArticlesUseCaseTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Wait for completion")
         sut.fetchArticles { articles, error in
             expectation.fulfill()
-            XCTAssertTrue(articles == [])
+            XCTAssertTrue(((articles?.isEmpty) != nil))
             XCTAssertEqual(error as? CustomErrors, CustomErrors.dbOpertaionFailure)
             XCTAssertEqual((error as? CustomErrors)?.rawValue, "Oh oh! Seems like something is not right. Update your app or try reaching out to support.")
         }

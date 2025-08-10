@@ -49,7 +49,7 @@ final class LocalArticlesRepositoryTests: XCTestCase {
     private struct TestFixtures {
         private static let fixedDate = Date(timeIntervalSince1970: 1_640_995_200)
         static let articles: [Article] = [
-            Article(headline: "Headline1", body: "Body1", published: fixedDate, rawImageURL: "URL")!
+            Article(id: "1", headline: "Headline1", body: "Body1", published: fixedDate, rawImageURL: "URL", isFavourited: nil)
         ]
     }
 }

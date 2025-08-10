@@ -154,7 +154,7 @@ final class ArticleViewController: UIViewController {
         let favouriteButtonImage = (article.isFavourited ?? false) ? UIImage(named: "favourite-on") : UIImage(named: "favourite-off")
         addToFavouritesButton.setImage(favouriteButtonImage, for: .normal)
         
-        viewModel.favouriteArticle(article: article) { [weak self] error in
+        viewModel.favouriteArticle(article: article) { _ in
            // TODO: Handle error
         }
     }
