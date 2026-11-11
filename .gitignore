@@ -18,3 +18,15 @@ Pods
 
 # AppCode
 /.idea
+
+# Android
+android/local.properties
+android/.gradle
+android/.idea
+android/*/build
+android/build
+android/.kotlin
+android/captures
+android/*.iml
+android/local.jks
+
